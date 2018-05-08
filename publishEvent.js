@@ -11,6 +11,7 @@ exports.handleEvents = (event, context, callback) => {
     event.Records.forEach((record) => {
       if (record.eventName === 'INSERT') {
         const newEvent = record.dynamodb.NewImage;
+        console.log("Message from DynamoDB stream", newEvent)
         const params = {
           Message: JSON.stringify(newEvent),
           TopicArn: process.env.SNS_TOPIC
