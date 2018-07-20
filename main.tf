@@ -1,7 +1,7 @@
 resource "aws_dynamodb_table" "events" {
   name             = "${var.events_table}"
-  read_capacity    = 50
-  write_capacity   = 50
+  read_capacity    = "${var.events_read_capacity}"
+  write_capacity   = "${var.events_write_capacity}"
   hash_key         = "aggregateId"
   range_key        = "rowKey"
   stream_enabled   = true
@@ -24,8 +24,8 @@ resource "aws_dynamodb_table" "events" {
 
 resource "aws_dynamodb_table" "snapshots" {
   name           = "${var.snapshots_table}"
-  read_capacity  = 1
-  write_capacity = 1
+  read_capacity  = "${var.snapshots_read_capacity}"
+  write_capacity = "${var.snapshots_write_capacity}"
   hash_key       = "aggregateId"
   range_key      = "id"
 
