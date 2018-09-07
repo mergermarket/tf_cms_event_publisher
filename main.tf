@@ -7,6 +7,10 @@ resource "aws_dynamodb_table" "events" {
   stream_enabled   = true
   stream_view_type = "NEW_IMAGE"
 
+  point_in_time_recovery {
+    enabled = true
+  }
+
   attribute {
     name = "aggregateId"
     type = "S"
@@ -28,6 +32,10 @@ resource "aws_dynamodb_table" "snapshots" {
   write_capacity = "${var.snapshots_write_capacity}"
   hash_key       = "aggregateId"
   range_key      = "id"
+
+  point_in_time_recovery {
+    enabled = true
+  }
 
   attribute {
     name = "aggregateId"
