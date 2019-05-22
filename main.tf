@@ -1,7 +1,6 @@
 resource "aws_dynamodb_table" "events" {
   name             = "${var.events_table}"
-  read_capacity    = "${var.events_read_capacity}"
-  write_capacity   = "${var.events_write_capacity}"
+  billing_mode     = "PAY_PER_REQUEST"
   hash_key         = "aggregateId"
   range_key        = "rowKey"
   stream_enabled   = true

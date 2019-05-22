@@ -7,18 +7,6 @@ variable "events_table" {
   type        = "string"
 }
 
-variable "events_read_capacity" {
-  description = "The read capacity of the events DynamoDB table"
-  type        = "string"
-  default     = "50"
-}
-
-variable "events_write_capacity" {
-  description = "The write capacity of the events DynamoDB table"
-  type        = "string"
-  default     = "50"
-}
-
 variable "snapshots_table" {
   description = "The name of the DynamoDB table used to store snapshots"
   type        = "string"
