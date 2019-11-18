@@ -30,7 +30,7 @@ module "backup-selection-events" {
   version      = "1.0.0"
   identifier   = "${var.events_table}-backup"
   database_arn = "${aws_dynamodb_table.events.arn}"
-  plan_name    = "daily_plan"
+  plan_name    = "default"
 }
 
 resource "aws_dynamodb_table" "snapshots" {
@@ -64,7 +64,7 @@ module "backup-selection-snapshots" {
   version      = "1.0.0"
   identifier   = "${var.snapshots_table}-backup"
   database_arn = "${aws_dynamodb_table.snapshots.arn}"
-  plan_name    = "daily_plan"
+  plan_name    = "default"
 }
 
 resource "aws_sns_topic" "sns_topic" {
