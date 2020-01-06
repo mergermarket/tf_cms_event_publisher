@@ -54,6 +54,11 @@ resource "aws_dynamodb_table" "snapshots" {
     type = "S"
   }
 
+  attribute {
+    name = "rowKey"
+    type = "S"
+  }
+
   tags {
     Environment = "${var.env}"
   }
