@@ -24,7 +24,7 @@ resource "aws_dynamodb_table" "events" {
     Environment = "${var.env}"
   }
 
-    global_secondary_index {
+  global_secondary_index {
     name               = "${var.events_table}-index"
     hash_key           = "aggregateId"
     range_key          = "rowKey"
