@@ -57,6 +57,16 @@ resource "aws_dynamodb_table" "snapshots" {
   tags {
     Environment = "${var.env}"
   }
+
+    global_secondary_index {
+    name               = "${var.events_table}-index"
+    hash_key           = "aggregateId"
+    range_key          = "rowKey"
+    read_capacity      = "${var.snapshots_read_capacity}"
+    write_capacity     = "${var.snapshots_write_capacity}"
+    projection_type    = "INCLUDE"
+    non_key_attributes = ["id"]
+  }
 }
 
 module "backup-selection-snapshots" {
