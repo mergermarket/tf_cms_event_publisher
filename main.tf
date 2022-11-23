@@ -35,14 +35,6 @@ resource "aws_dynamodb_table" "events" {
   }
 }
 
-module "backup-selection-events" {
-  source       = "mergermarket/centralised-aws-backup-selection/acuris"
-  version      = "1.0.0"
-  identifier   = "${var.events_table}-backup"
-  database_arn = "${aws_dynamodb_table.events.arn}"
-  plan_name    = "default"
-}
-
 resource "aws_dynamodb_table" "snapshots" {
   name           = "${var.snapshots_table}"
   read_capacity  = "${var.snapshots_read_capacity}"
@@ -67,14 +59,6 @@ resource "aws_dynamodb_table" "snapshots" {
   tags {
     Environment = "${var.env}"
   }
-}
-
-module "backup-selection-snapshots" {
-  source       = "mergermarket/centralised-aws-backup-selection/acuris"
-  version      = "1.0.0"
-  identifier   = "${var.snapshots_table}-backup"
-  database_arn = "${aws_dynamodb_table.snapshots.arn}"
-  plan_name    = "default"
 }
 
 resource "aws_sns_topic" "sns_topic" {
