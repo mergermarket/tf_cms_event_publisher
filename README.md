@@ -9,7 +9,7 @@ This Terraform module sets up an event publishing system for Content Management 
 🌐 **Decoupled Architecture**: Enables event-driven microservices  
 
 ## Usage
-```hcl
+
 module "cms_event_publisher" {
   source          = "github.com/mergermarket/tf_cms_event_publisher?ref=v2.0.0"
   env             = "production"
